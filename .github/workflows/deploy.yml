@@ -4,13 +4,38 @@ on:
     push:
         branches:
         - main
+    pull_request:
+        branches:
+        - main
+    workflow_dispatch:
+    schedule:
+        - cron: '0 0 * * *'  # Ejecutar diariamente a medianoche UTC
+    repository_dispatch:
+        types: [deploy-codigofacilito-clase-1, deploy-codigofacilito-clase-2]
+    workflow_run:
+        workflows: ["deploy-codigofacilito-clase-1"]
+        types: [completed]
+    
+
+
 
 jobs:
-    deploy-codigofacilito:
-        runs-on: ubuntu-latest
+    deploy-codigofacilitode-clase-1:
+        runs-on: alpine:latest
+       
         steps:
             - name: Checkout code
+              shell: bash
               run: echo "Hola mundo desde GitHub Actions"
-         
-  
 
+
+    deploy-codigofacilito-clase-2:
+        needs: deploy-codigofacilitode-clase-1
+        if: ${{github.event_name == 'push' && github.ref == 'refs/heads/main'}}
+        runs-on: alpine:latest
+        steps:
+            - name: Checkout code
+              run: echo "Hola mundo desde GitHub Actions 2"
+            - name: dirigirse al directorio usando la action de actions/checkout@v4
+              uses: actions/checkout@v4
+              

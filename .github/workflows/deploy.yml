@@ -4,18 +4,7 @@ on:
     push:
         branches:
         - main
-    pull_request:
-        branches:
-        - main
-    workflow_dispatch:
-    schedule:
-        - cron: '0 0 * * *'  # Ejecutar diariamente a medianoche UTC
-    repository_dispatch:
-        types: [deploy-codigofacilito-clase-1, deploy-codigofacilito-clase-2]
-    workflow_run:
-        workflows: ["deploy-codigofacilito-clase-1"]
-        types: [completed]
-    
+
 
 
 

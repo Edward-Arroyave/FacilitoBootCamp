@@ -14,4 +14,4 @@ jobs:
     needs: first_jobs
     steps:
       - name: Hola mundo
-        run: echo "Hola mundo desde el segundo job"
+        run: echo "Hola mundo desde el segundo job con directiva needs"

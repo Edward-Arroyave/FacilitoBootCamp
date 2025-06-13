@@ -14,5 +14,10 @@ jobs:
     needs: first_jobs
     if: ${{github.event_name == 'push' && github.ref == 'refs/heads/main'}}
     steps:
-      - name: Hola mundo
-        run: echo "Hola mundo desde el segundo job con directiva needs"
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: List files
+        run: ls -al
+      - name: workflow
+        run: ls -al
+

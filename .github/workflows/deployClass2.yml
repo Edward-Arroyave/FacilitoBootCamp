@@ -10,7 +10,7 @@ jobs:
         run: echo "Hola mundo desde el primer job"
 
   second_jobs:
-    runs-on: ubuntu-Lastest
+    runs-on: ubuntu-latest
     needs: first_jobs
     steps:
       - name: Hola mundo

@@ -15,10 +15,10 @@ jobs:
     needs: first_jobs
     if: ${{github.ref == 'refs/heads/main'}}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
       - name: List files
         run: ls -al
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: workflow
         run: ls -al
         
